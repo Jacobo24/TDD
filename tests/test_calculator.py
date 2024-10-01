@@ -1,57 +1,37 @@
-# Cargamos el módulo unittest
 import unittest
-# Importamos la clase calculator
-from src import calculator
+from src.calculator import Calculator
 
 # Creamos una clase heredando de TestCase
 class TestMyCalculator(unittest.TestCase):
     def setUp(self):
-        self.calc = calculator()
+        self.calc = Calculator()
 
     def test_initial_value(self):
         self.assertEqual(0, self.calc.value)
 
-    def test_add_method(self):
-        self.calc.add(1, 3)
-        self.assertEqual(4, self.calc.value)
-
-    def test_subtract_method(self):
-        self.calc.subtract(8, 2)
-        self.assertEqual(6, self.calc.value)
-
-    def test_multiply_method(self):
-        self.calc.multiply(2, 3)
-        self.assertEqual(6, self.calc.value)
-
-    def test_divide_method(self):
-        self.calc.divide(8, 2)
-        self.assertEqual(4, self.calc.value)
-
-    def test_power_method(self):
-        self.calc.power(2, 3)
-        self.assertEqual(8, self.calc.value)
-
-    def test_square_root_method(self):
-        self.calc.square_root(9)
-        self.assertEqual(3, self.calc.value)
-
-    def test_logarithm_method(self):
-        self.calc.logarithm(100, 10)
-        self.assertEqual(2, self.calc.value)
-
-    def test_sine_method(self):
-        self.calc.sine(90)
-        self.assertEqual(1, self.calc.value)
-
-    def test_cosine_method(self):
-        self.calc.cosine(0)
-        self.assertEqual(1, self.calc.value)
-
-    def test_tangent_method(self):
-        self.calc.tangent(45)
-        self.assertEqual(1, self.calc.value)
-
-    def test_factorial_method(self):
-        self.calc.factorial(5)
-        self.assertEqual(120, self.calc.value)
-        self.assert_equal(-1, "Error, este factorial no se puede calcular")
+    def test_suma(self):
+        self.assertEqual(3, self.calc.suma(1, 2))
+        self.assertEqual(5, self.calc.suma(2, 3))
+    
+    def test_resta(self):
+        self.assertEqual(-1, self.calc.resta(1, 2))
+        self.assertEqual(-1, self.calc.resta(2, 3))
+    
+    def test_multiplicacion(self):
+        self.assertEqual(2, self.calc.multiplicacion(1, 2))
+        self.assertEqual(6, self.calc.multiplicacion(2, 3))
+    
+    def test_division(self):
+        self.assertEqual(0.5, self.calc.division(1, 2))
+        self.assertEqual(1, self.calc.division(2, 2))
+        self.assertEqual("Error: division entre cero", self.calc.division(1, 0))
+    
+    def test_potencia(self):
+        self.assertEqual(1, self.calc.potencia(1, 2))
+        self.assertEqual(8, self.calc.potencia(2, 3))
+    
+    def test_factorial(self):
+        self.assertEqual(1, self.calc.factorial(0))
+        self.assertEqual(1, self.calc.factorial(1))
+        self.assertEqual(2, self.calc.factorial(2))
+        self.assertEqual("Error: factorial de un número negativo", self.calc.factorial(-4))
