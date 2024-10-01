@@ -1,11 +1,12 @@
 # Cargamos el módulo unittest
 import unittest
-from src import Calculator
+# Importamos la clase calculator
+from calculadora import calculator
 
 # Creamos una clase heredando de TestCase
 class TestMyCalculator(unittest.TestCase):
     def setUp(self):
-        self.calc = Calculator()
+        self.calc = calculator()
 
     def test_initial_value(self):
         self.assertEqual(0, self.calc.value)
@@ -53,3 +54,4 @@ class TestMyCalculator(unittest.TestCase):
     def test_factorial_method(self):
         self.calc.factorial(5)
         self.assertEqual(120, self.calc.value)
+        self.assert_equal(-1, "Error, este factorial no se puede calcular")
