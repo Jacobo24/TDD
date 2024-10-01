@@ -1,7 +1,7 @@
 # Cargamos el módulo unittest
 import unittest
 # Importamos la clase calculator
-from calculadora import calculator
+from src import calculator
 
 # Creamos una clase heredando de TestCase
 class TestMyCalculator(unittest.TestCase):
